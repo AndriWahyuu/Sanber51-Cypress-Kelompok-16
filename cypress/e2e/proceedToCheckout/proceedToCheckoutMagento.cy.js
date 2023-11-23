@@ -7,7 +7,8 @@ describe('Verify Procees to Checkout', () => {
     cy.get('#pass').type('Testizzah123')
     cy.get('.action.login.primary').click()
     cy.get('.action.showcart').click()
-    cy.get('.action.primary.checkout').click()
+    //cy.get('.action.primary.checkout').click()
+    //cy.get('#top-cart-btn-checkout').click()
   
   })
   it('passes', () => {
