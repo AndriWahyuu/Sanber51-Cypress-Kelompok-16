@@ -1,3 +1,6 @@
+const userData          = require('../../fixtures/userData.json')
+const userDataShipping  = require('../../fixtures/userDataShipping.json')
+
 describe('Verify Procees to Checkout', () => {
   beforeEach(() => {
 
@@ -13,6 +16,8 @@ describe('Verify Procees to Checkout', () => {
   })
   it('Terdapat produk yang akan dibeli di keranjang dan belum memasukkan data checkout', () => {
     cy.get(".checkout-methods-items > :nth-child(1) > .action").should("be.visible").click();
-    //cy.url().should('include', '/checkout/#shipping.html')      
+    cy.url().should('include', 'checkout/#shipping.html')
+    //cy.url().should('include', 'https://magento.softwaretestingboard.com/')
+    cy.get('#YO17RYX').type(userDataShipping.validUser.firstName)
   })
 })

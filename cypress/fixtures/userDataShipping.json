@@ -1,0 +1,17 @@
+{
+    "validUser" : 
+        {
+            "firstName"     : "Izzah",
+            "lastName"      : "Tazkiyah",
+            "company"       : "UPNVJT",
+            "streetAddress" : "Brigjend Katamso 1",
+            "city"          : "Sidoarjo",
+            "state"         : "East Java",
+            "postalCode"    : "12345",
+            "country"       : "Indonesia",
+            "phoneNumber"   : "081234567890",
+            "shippingMtd"   : ""
+        }
+    
+
+}

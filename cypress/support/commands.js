@@ -24,7 +24,7 @@ Cypress.Commands.add('checkoutShipping', (email, pass) => {
 })
 
 Cypress.Commands.add('verifyContain', (locator, value) => {
-    
+   cy.get(locator).should('contain', value) //locator = data input yang akan mengeluarkan output nantinya
 })
 
 // -- This is a child command --
