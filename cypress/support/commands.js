@@ -13,6 +13,20 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 //
+Cypress.Commands.add('login', (email, pass) => {
+    cy.get('#email').type('email')
+    cy.get('#pass').type('pass')
+    cy.get('.action.login.primary').click()
+})
+
+Cypress.Commands.add('checkoutShipping', (email, pass) => {
+
+})
+
+Cypress.Commands.add('verifyContain', (locator, value) => {
+    
+})
+
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //

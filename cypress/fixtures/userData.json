@@ -1,0 +1,18 @@
+{
+    "valid": [
+        {
+        "valid_user": "testizzah@gmail.com",
+        "valid_password": "Testizzah123"
+        },
+        {
+            "valid_user": "testingizzah@gmail.com",
+            "valid_password": "Testingzzah123"
+            }
+    ],
+    "invalid": [
+        {
+            "invalid_user": "ABC123",
+            "invalid_pass": "ABC123"
+        }
+    ]
+}
