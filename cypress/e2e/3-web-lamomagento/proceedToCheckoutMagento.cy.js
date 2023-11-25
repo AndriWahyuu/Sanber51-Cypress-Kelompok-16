@@ -14,7 +14,7 @@ describe('Verify Procees to Checkout', () => {
   })
   it('Terdapat produk yang akan dibeli di keranjang dan belum memasukkan data checkout', () => {
     cy.get('.action.primary.checkout').contains('Proceed to Checkout').should("be.visible").click();
-    cy.wait(5000)
+    cy.wait(7000)
     cy.visit('https://magento.softwaretestingboard.com/checkout/#shipping');
     cy.url().should('include', 'https://magento.softwaretestingboard.com/checkout/#shipping');
     cy.get('[name="firstname"]').type(userDataShipping.validUser.firstName);
@@ -28,6 +28,7 @@ describe('Verify Procees to Checkout', () => {
     cy.get('[name="postcode"]').type(userDataShipping.validUser.postalCode);
     cy.get('[name="country_id"]').type(userDataShipping.validUser.country);
     cy.get('[name="telephone"]').type(userDataShipping.validUser.phoneNumber);    
+    cy.get('[type="radio"].radio').first().check()
 
   })
 })
