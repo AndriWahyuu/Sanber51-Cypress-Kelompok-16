@@ -187,5 +187,9 @@
     "url": "git+https://github.com/AndriWahyuu/Sanber51-Cypress-Kelompok-16.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndriWahyuu/Sanber51-Cypress-Kelompok-16/issues"
+  },
+  "homepage": "https://github.com/AndriWahyuu/Sanber51-Cypress-Kelompok-16#readme"
 }

@@ -1,9 +1,9 @@
 {
     "validUser" : 
         {
-            "firstName"     : "Izzah00",
-            "lastName"      : "Tazkiyah00",
-            "company"       : "UPNVJT",
+            "firstName"         : "Izzah",
+            "lastName"          : "Tazkiyah",
+            "emailAddress"      : "izzah@",
             "streetAddress" : "Brigjend Katamso 1",
             "city"          : "Sidoarjo",
             "state"         : "East Java",
