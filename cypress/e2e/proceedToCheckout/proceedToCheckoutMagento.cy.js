@@ -10,8 +10,6 @@ describe('Verify Procees to Checkout', () => {
     cy.get('#pass').type('Testingizzah123');
     cy.get('.action.login.primary').click();
     cy.get('.action.showcart').click();
-    //cy.get('#top-cart-btn-checkout').click();
-    //cy.get('action.primary.checkout').click({force: true});
     cy.get(".showcart").should("be.visible").click();
   })
   it('Terdapat produk yang akan dibeli di keranjang dan belum memasukkan data checkout', () => {
@@ -20,6 +18,16 @@ describe('Verify Procees to Checkout', () => {
     cy.visit('https://magento.softwaretestingboard.com/checkout/#shipping');
     cy.url().should('include', 'https://magento.softwaretestingboard.com/checkout/#shipping');
     cy.get('[name="firstname"]').type(userDataShipping.validUser.firstName);
-    
+    cy.get('[name="lastname"]').type(userDataShipping.validUser.lastName);
+    cy.get('[name="company"]').type(userDataShipping.validUser.company);
+    cy.get('[name="street[0]"]').type(userDataShipping.validUser.streetAddress0);
+    cy.get('[name="street[1]"]').type(userDataShipping.validUser.streetAddress1);
+    cy.get('[name="street[2]"]').type(userDataShipping.validUser.streetAddress2);
+    cy.get('[name="city"]').type(userDataShipping.validUser.city);
+    cy.get('[name="region_id"]').type(userDataShipping.validUser.state);
+    cy.get('[name="postcode"]').type(userDataShipping.validUser.postalCode);
+    cy.get('[name="country_id"]').type(userDataShipping.validUser.country);
+    cy.get('[name="telephone"]').type(userDataShipping.validUser.phoneNumber);    
+
   })
 })
