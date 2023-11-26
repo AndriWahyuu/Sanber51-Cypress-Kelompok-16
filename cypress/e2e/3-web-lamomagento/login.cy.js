@@ -17,6 +17,13 @@ describe('Login Verivication Test', () => {
     cy.get('.action.login.primary').click()
     cy.get('.message-error').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
   })
+  it('Login failed 3', () => {
+    cy.visit('https://magento.softwaretestingboard.com/')
+    cy.contains('Sign In').click()
+    cy.get('.authorization-link').eq(0).click()
+    
+    cy.get('.action.login.primary').click()
+  })
   it('Login Pass', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
     cy.contains('Sign In').click()
