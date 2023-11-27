@@ -1,5 +1,5 @@
 describe('Login Verivication Test', () => {
-  it('Login failed', () => {
+  it('Login failed (login with invalid emmail & password', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
     cy.contains('Sign In').click()
     cy.get('.authorization-link').eq(0).click()
@@ -8,7 +8,7 @@ describe('Login Verivication Test', () => {
     cy.get('.action.login.primary').click()
     cy.get('.message-error').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
   })
-  it('Login failed 2', () => {
+  it('Login failed 2 (login with invalid password)', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
     cy.contains('Sign In').click()
     cy.get('.authorization-link').eq(0).click()
@@ -17,27 +17,38 @@ describe('Login Verivication Test', () => {
     cy.get('.action.login.primary').click()
     cy.get('.message-error').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
   })
-  it('Login failed 3', () => {
+  it('Login failed 3 (without fill email and password)', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
     cy.contains('Sign In').click()
     cy.get('.authorization-link').eq(0).click()
     cy.get('.action.login.primary').click()
+    cy.get('.message-error').should('contain', 'A login and a password are required.')
   })
-  it('Login failed 4', () => {
+  it('Login failed 4 (without fill the password)', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
     cy.contains('Sign In').click()
     cy.get('.authorization-link').eq(0).click()
     cy.get('#email').type('agung@gmail.com')
     cy.get('.action.login.primary').click()
-    //cy.get('.message-error').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
+    cy.get('.message-error').should('contain', 'A login and a password are required.')
   })
-  it('Login Pass', () => {
+  it('Login failed 5 (login with wrong format)', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
+    cy.contains('Sign In').click()
+    cy.get('.authorization-link').eq(0).click()
+    cy.get('#email').type('agung')
+    cy.get('#pass').type('test12345')
+    cy.get('.action.login.primary').click()
+    //cy.get('.message-error').should('contain', 'A login and a password are required.')
+  })
+  
+  it('Login Success', () => {
+    cy.visit('https://magento.softwaretestingboard.com')
     cy.contains('Sign In').click()
     cy.get('.authorization-link').eq(0).click()
     cy.get('#email').type('agung@gmail.com')
     cy.get('#pass').type('Agung12345')
     cy.get('.action.login.primary').click()
-    //cy.get('.message-error').should('contain', 'The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.')
+    cy.url().should('include', '/')
   })
 })
