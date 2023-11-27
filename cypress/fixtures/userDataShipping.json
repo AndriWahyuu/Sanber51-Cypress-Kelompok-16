@@ -2,17 +2,16 @@
     "validUser" : 
         {
             "firstName"         : "SanberQA",
-            "lastName"          : "51-16",
+            "lastName"          : "Enambelas",
             "company"           : "Sanbercode",
             "streetAddress0"    : "Jalan Merak",
             "streetAddress1"    : "-",
             "streetAddress2"    : "-",
-            "city"          : "Sidoarjo",
-            "state"         : "East Java",
-            "postalCode"    : "12345",
-            "country"       : "Indonesia",
-            "phoneNumber"   : "081234567890",
-            "shippingMtd"   : ""
+            "city"              : "Sidoarjo",
+            "state"             : "East Java",
+            "postalCode"        : "12345",
+            "country"           : "Indonesia",
+            "phoneNumber"       : "081234567890"
         }
     
 
