@@ -13,6 +13,11 @@
 // Cypress.Commands.add('login', (email, password) => { ... })
 //
 //
+Cypress.Commands.add('clickCreateAccount', () => {
+    cy.contains('Create an Account').click();
+    cy.visit('https://magento.softwaretestingboard.com/customer/account/create/')
+})
+
 Cypress.Commands.add('login', (email, pass) => {
     cy.get('#email').type('email')
     cy.get('#pass').type('pass')
@@ -22,11 +27,6 @@ Cypress.Commands.add('login', (email, pass) => {
 Cypress.Commands.add('checkoutShipping', (email, pass) => {
 
 })
-
-Cypress.Commands.add('verifyContain', (locator, value) => {
-   cy.get(locator).should('contain', value) //locator = data input yang akan mengeluarkan output nantinya
-})
-
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //

@@ -1,5 +1,6 @@
-describe('Login Verivication Test', () => {
-  it('Login failed (login with invalid emmail & password', () => {
+
+describe('Login Verification Test', () => {
+  it('Login failed', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
     cy.contains('Sign In').click()
     cy.get('.authorization-link').eq(0).click()

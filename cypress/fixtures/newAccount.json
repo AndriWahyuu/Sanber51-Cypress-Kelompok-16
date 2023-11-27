@@ -1,0 +1,19 @@
+{
+    "registration": {
+        "userValid": {
+                "firstName" : "SanbercodeQA",
+                "lastName"   : "51-16",
+                "email"     : "sanbercodeQA5116@gmail.com",
+                "password"  : "SanbercodeQA51-16",
+                "strongpw"  : "S@nbercodeQA51-16"
+        },
+        "userInvalid": {
+                "firstname"        : "SanbercodeQA",
+                "lastame"          : "51-16",
+                "email"            : "sanbercodeQA5116@gmail.com",
+                "invalidemail"     : "sanbercodeQA5116@gmailcom",
+                "password"         : "SanbercodeQA51-16",
+                "invalidpw"        : "012345"
+        }
+    }
+}
