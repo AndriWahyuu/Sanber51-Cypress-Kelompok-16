@@ -1,4 +1,6 @@
-describe('Login Verivication Test', () => {
+const userDataCreateAccount          = require('../../fixtures/userDataCreateAccount.json')
+
+describe('Login Verification Test', () => {
   it('Login failed', () => {
     cy.visit('https://magento.softwaretestingboard.com/')
     cy.contains('Sign In').click()
