@@ -1,7 +1,7 @@
 describe('Magento view Cart Test', () => {
   beforeEach(() => {
     // Buka halaman utama Magento
-    cy.visit('https://www.magento.com/');
+    cy.visit('https://magento.softwaretestingboard.com/');
   });
 
   it('should add a product to the cart and update quantity', () => {
