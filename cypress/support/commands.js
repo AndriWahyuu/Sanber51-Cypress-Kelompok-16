@@ -22,10 +22,11 @@ Cypress.Commands.add('clickCreateAccount', () => {
 Cypress.Commands.add('addProductfromAccountDashboard', () => {
     cy.get('.logo').click();
     cy.get('.product-item-link').contains('Radiant Tee').click();
-    cy.get('#option-label-size-143-item-166').click(); 
+    cy.get('#option-label-size-143-item-166').focus().type('{enter}');
     cy.get('#option-label-color-93-item-50').focus().type('{enter}');
     cy.get('#product-addtocart-button').contains('Add to Cart').click();
     cy.wait(5000);
+    cy.get('.message-success').should('be.visible').and('contain', 'You added');
     //cy.get('.action.showcart').click();
     //cy.wait(5000)
 })

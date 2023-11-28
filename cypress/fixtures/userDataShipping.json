@@ -1,8 +1,9 @@
 {
-    "validUser" : 
+    "validUser" :
+    [
         {
             "firstName"         : "SanberQA",
-            "lastName"          : "Enambelas",
+            "lastName"          : "51-16",
             "company"           : "Sanbercode",
             "streetAddress0"    : "Jalan Merak",
             "streetAddress1"    : "-",
@@ -12,7 +13,20 @@
             "postalCode"        : "12345",
             "country"           : "Indonesia",
             "phoneNumber"       : "081234567890"
+        },
+        {
+            "firstName"         : "SanberQA",
+            "lastName"          : "51-16",
+            "company"           : "Sanbercode",
+            "streetAddress0"    : "Jalan Merak",
+            "streetAddress1"    : "-",
+            "streetAddress2"    : "-",
+            "city"              : "US",
+            "state"             : "Alaska",
+            "postalCode"        : "12345",
+            "country"           : "United States",
+            "phoneNumber"       : "081234567890"
         }
-    
+    ]
 
 }
