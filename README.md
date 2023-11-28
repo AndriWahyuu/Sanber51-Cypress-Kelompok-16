@@ -2,5 +2,5 @@
 - Create an Account : Rizki
 - Login : Agung
 - Choose Product : Masyara
-- View and Update Shooping Cart : Ana
+- View and Update Shooping Cart : Andriana
 - Proceed to Checkout : Izzah
