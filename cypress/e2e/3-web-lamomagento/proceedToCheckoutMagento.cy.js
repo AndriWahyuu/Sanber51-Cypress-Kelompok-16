@@ -31,7 +31,7 @@ describe("Verify Proceed to Checkout in First Order", () => {
           userDataShipping.validUser[0].phoneNumber)
     });
 
-    it.only('First order with Region ID', () => { 
+    it('First order with Region ID', () => { 
       checkout.orderCheckoutRegionID(
         userDataShipping.validUser[1].firstName,
         userDataShipping.validUser[1].lastName, 
