@@ -108,10 +108,6 @@ describe("Verify Proceed to Checkout in First Order", () => {
       cy.get('.button.action.continue.primary').contains('Next').click();
     });
 
-    it('Empty Data Field', () => { 
-
-    });
-
     afterEach(() => {
       cy.shippingMethod();
       cy.finishDataShipping(); 
@@ -127,7 +123,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     cy.checkoutShipping();
   }); 
 
-  it('5 - Next Order without Add New Address Shipping', () => { 
+  it.only('Next Order without Add New Address Shipping', () => { 
       // telah dijalankan di beforeEach dan afterEach
   });
 
@@ -176,7 +172,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
 
   afterEach(() => {
     cy.shippingMethod();
-    cy.finishDataShipping();  
+    cy.finishDataShipping(); 
     cy.finishShipping();
   }); 
  
