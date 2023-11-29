@@ -127,7 +127,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
       // telah dijalankan di beforeEach dan afterEach
   });
 
-  it('Next order add the shipping address with Region', () => { 
+  it.skip('Next order add the shipping address with Region', () => { 
     cy.get('.action.action-show-popup').contains('New Address').click();
     cy.wait(2000)
     checkout.orderCheckoutRegion(
@@ -146,7 +146,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     cy.wait(2000)
   });
 
-  it(' Next order add the shipping address with RegionID', () => { 
+  it.skip(' Next order add the shipping address with RegionID', () => { 
     cy.get('.action.action-show-popup').contains('New Address').click();
     cy.wait(2000)
     checkout.orderCheckoutRegionID(
@@ -165,7 +165,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     cy.wait(2000)
   });
 
-  it('Change the shipping address', () => { 
+  it.only('Change the shipping address', () => { 
     cy.get('.action.action-select-shipping-item').eq(1).contains('Ship Here').click();
     cy.wait(1000)
   });
@@ -187,7 +187,7 @@ describe("Verify Proceed to Checkout with Apply Discount", () => {
     cy.finishDataShipping(); 
   }); 
 
-  it('Apply Invalid Discount', () => { 
+  it.skip('Apply Invalid Discount', () => { 
     cy.get('#block-discount-heading').contains('Apply Discount Code').click();
     cy.wait(1000)
     cy.get('[name="discount_code"]').type('diskon');

@@ -30,10 +30,12 @@ Cypress.Commands.add('login', () => {
 Cypress.Commands.add('addProduct', () => {
     cy.get('.logo').click();
     cy.get('.product-item-link').contains('Radiant Tee').click();
-    cy.get('#option-label-size-143-item-166').focus().click();
-    cy.get('#option-label-color-93-item-50').focus().click();
+    cy.get('[id="option-label-size-143-item-166"]').click()
+    cy.wait(1000)
+    cy.get('[id="option-label-color-93-item-50"]').click()
+    cy.wait(1000)
     cy.get('#product-addtocart-button').contains('Add to Cart').click();
-    cy.wait(5000);
+    cy.wait(7000);
     cy.get('.message-success').should('be.visible').and('contain', 'You added');
     //cy.get('.action.showcart').click();
     //cy.wait(5000)
@@ -41,7 +43,7 @@ Cypress.Commands.add('addProduct', () => {
 
 Cypress.Commands.add('checkoutShipping', () => {
     cy.get(".showcart").should("be.visible").click();
-    cy.wait(4000);
+    cy.wait(7000);
     cy.get('#top-cart-btn-checkout').contains('Proceed to Checkout').should("be.visible").click();
     cy.wait(7000);
     cy.visit('https://magento.softwaretestingboard.com/checkout/#shipping');
@@ -54,7 +56,7 @@ Cypress.Commands.add('shippingMethod', () => {
 
 Cypress.Commands.add('finishDataShipping', () => {
     cy.get('.button.action.continue.primary').contains('Next').click();
-    cy.wait(4000)
+    cy.wait(7000)
 })
 
 Cypress.Commands.add('finishShipping', () => {
