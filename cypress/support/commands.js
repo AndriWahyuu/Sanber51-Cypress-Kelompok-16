@@ -19,7 +19,15 @@ Cypress.Commands.add('clickCreateAccount', () => {
     cy.visit('https://magento.softwaretestingboard.com/customer/account/create/')
 })
 
-Cypress.Commands.add('addProductfromAccountDashboard', () => {
+Cypress.Commands.add('login', () => {
+    cy.visit('');
+    cy.get('.authorization-link').eq(0).click();
+    cy.get('#email').type('testingizzah@gmail.com');
+    cy.get('#pass').type('Testingizzah123');
+    cy.get('.action.login.primary').click()
+})
+
+Cypress.Commands.add('addProduct', () => {
     cy.get('.logo').click();
     cy.get('.product-item-link').contains('Radiant Tee').click();
     cy.get('#option-label-size-143-item-166').focus().type('{enter}');
@@ -33,11 +41,22 @@ Cypress.Commands.add('addProductfromAccountDashboard', () => {
 
 Cypress.Commands.add('checkoutShipping', () => {
     cy.get(".showcart").should("be.visible").click();
-    cy.wait(5000);
+    cy.wait(4000);
     cy.get('#top-cart-btn-checkout').contains('Proceed to Checkout').should("be.visible").click();
-    cy.wait(5000);
+    cy.wait(7000);
     cy.visit('https://magento.softwaretestingboard.com/checkout/#shipping');
     cy.url().should('include', 'https://magento.softwaretestingboard.com/checkout/#shipping');
+})
+
+Cypress.Commands.add('finishShipping', () => {
+    cy.get('.button.action.continue.primary').contains('Next').click();
+    cy.wait(4000)
+    cy.get('.action.primary.checkout').contains('Place Order').should("be.visible").click();
+    cy.wait(4000)
+    cy.get('.base').should('be.visible').and('contain', 'Thank you for your purchase!');
+    cy.get('.action.primary.continue').contains('Continue Shopping').should("be.visible").click();
+    cy.wait(4000)
+    cy.url().should('include', 'https://magento.softwaretestingboard.com/');
 })
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

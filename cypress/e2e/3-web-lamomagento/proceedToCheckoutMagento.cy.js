@@ -12,12 +12,12 @@ describe("Verify Proceed to Checkout in First Order", () => {
         Date.now() + newAccount.registration.userValid.email, 
         newAccount.registration.userValid.password 
       );
-      cy.addProductfromAccountDashboard();
+      cy.addProduct();
       cy.checkoutShipping();
     }); 
   
     it('1 - First order with Region', () => { 
-        checkout.firstOrderCheckoutRegion(
+        checkout.orderCheckoutRegion(
           userDataShipping.validUser[0].firstName,
           userDataShipping.validUser[0].lastName, 
           userDataShipping.validUser[0].company,
@@ -32,7 +32,7 @@ describe("Verify Proceed to Checkout in First Order", () => {
     });
 
     it('2 - First order with Region ID', () => { 
-      checkout.firstOrderCheckoutRegionID(
+      checkout.orderCheckoutRegionID(
         userDataShipping.validUser[1].firstName,
         userDataShipping.validUser[1].lastName, 
         userDataShipping.validUser[1].company,
@@ -47,7 +47,7 @@ describe("Verify Proceed to Checkout in First Order", () => {
     });
 
     it('3 - First order but change the shipping address/method with Region', () => { 
-      checkout.firstOrderCheckoutRegionchangeData(
+      checkout.orderCheckoutRegion(
         userDataShipping.validUser[0].firstName,
         userDataShipping.validUser[0].lastName, 
         userDataShipping.validUser[0].company,
@@ -59,10 +59,26 @@ describe("Verify Proceed to Checkout in First Order", () => {
         userDataShipping.validUser[0].state,
         userDataShipping.validUser[0].postalCode,
         userDataShipping.validUser[0].phoneNumber)
+      cy.get('.button.action.continue.primary').contains('Next').click();
+      cy.wait(7000)
+      cy.get('.action.action-edit').eq(0).click();
+      checkout.clearOrderCheckoutRegion(
+        userDataShipping.validUser[0].firstName,
+        userDataShipping.validUser[0].lastName, 
+        userDataShipping.validUser[0].company,
+        userDataShipping.validUser[0].streetAddress0,
+        userDataShipping.validUser[0].streetAddress1,
+        userDataShipping.validUser[0].streetAddress2,
+        userDataShipping.validUser[0].city,
+        userDataShipping.validUser[0].country,
+        userDataShipping.validUser[0].state,
+        userDataShipping.validUser[0].postalCode,
+        userDataShipping.validUser[0].phoneNumber)
+      cy.get('.button.action.continue.primary').contains('Next').click();
     });
 
     it('4 - First order but change the shipping address/method with Region', () => { 
-      checkout.firstOrderCheckoutRegionID(
+      checkout.orderCheckoutRegionID(
         userDataShipping.validUser[1].firstName,
         userDataShipping.validUser[1].lastName, 
         userDataShipping.validUser[1].company,
@@ -74,31 +90,126 @@ describe("Verify Proceed to Checkout in First Order", () => {
         userDataShipping.validUser[1].state,
         userDataShipping.validUser[1].postalCode,
         userDataShipping.validUser[1].phoneNumber)
+      cy.get('.button.action.continue.primary').contains('Next').click();
+      cy.wait(7000)
+      cy.get('.action.action-edit').eq(0).click();
+      checkout.clearOrderCheckoutRegionID(
+        userDataShipping.validUser[1].firstName,
+        userDataShipping.validUser[1].lastName, 
+        userDataShipping.validUser[1].company,
+        userDataShipping.validUser[1].streetAddress0,
+        userDataShipping.validUser[1].streetAddress1,
+        userDataShipping.validUser[1].streetAddress2,
+        userDataShipping.validUser[1].city,
+        userDataShipping.validUser[1].country,
+        userDataShipping.validUser[1].state,
+        userDataShipping.validUser[1].postalCode,
+        userDataShipping.validUser[1].phoneNumber)
+      cy.get('.button.action.continue.primary').contains('Next').click();
     });
+
+    afterEach(() => { 
+      cy.finishShipping();
+    }); 
    
 });
 
-describe("Verify Proceed to Checkout in First Order", () => { 
+describe("Verify Proceed to Checkout in Next Order", () => { 
   beforeEach(() => { 
-    
-    cy.addProductfromAccountDashboard();
+    cy.login();
+    cy.addProduct();
     cy.checkoutShipping();
   }); 
 
-  it('1 - First order with Region', () => { 
+  it('5 - Next Order without Add New Address Shipping', () => { 
+      // telah dijalankan di beforeEach dan afterEach
+  });
+
+  it('6 - Next order add the shipping address with Region', () => { 
+    cy.get('.action.action-show-popup').contains('New Address').click();
+    cy.wait(2000)
+    checkout.orderCheckoutRegion(
+      userDataShipping.validUser[0].firstName,
+      userDataShipping.validUser[0].lastName, 
+      userDataShipping.validUser[0].company,
+      userDataShipping.validUser[0].streetAddress0,
+      userDataShipping.validUser[0].streetAddress1,
+      userDataShipping.validUser[0].streetAddress2,
+      userDataShipping.validUser[0].city,
+      userDataShipping.validUser[0].country,
+      userDataShipping.validUser[0].state,
+      userDataShipping.validUser[0].postalCode,
+      userDataShipping.validUser[0].phoneNumber)
+    cy.get('.action.primary.action-save-address').contains('Ship here').click();
+    cy.wait(2000)
+    cy.get('[type="radio"].radio').first().check()
+  });
+
+  it('7 - Next order add the shipping address with RegionID', () => { 
+    cy.get('.action.action-show-popup').contains('New Address').click();
+    cy.wait(2000)
+    checkout.orderCheckoutRegionID(
+      userDataShipping.validUser[1].firstName,
+      userDataShipping.validUser[1].lastName, 
+      userDataShipping.validUser[1].company,
+      userDataShipping.validUser[1].streetAddress0,
+      userDataShipping.validUser[1].streetAddress1,
+      userDataShipping.validUser[1].streetAddress2,
+      userDataShipping.validUser[1].city,
+      userDataShipping.validUser[1].country,
+      userDataShipping.validUser[1].state,
+      userDataShipping.validUser[1].postalCode,
+      userDataShipping.validUser[1].phoneNumber)
+    cy.get('.action.primary.action-save-address').contains('Ship here').click();
+    cy.wait(2000)
+    cy.get('[type="radio"].radio').first().check()
+  });
+
+  it('8 - Change the shipping address', () => { 
+    cy.get('.action.action-select-shipping-item').eq(1).contains('Ship Here').click();
+    cy.wait(1000)
+    cy.get('[type="radio"].radio').first().check()
+  });
+
+  it('9 - ', () => { 
 
   });
 
-  it('2 - First order with Region ID', () => { 
+  it('10 -', () => { 
 
   });
 
-  it('3 - First order but change the shipping address/method with Region', () => { 
+  afterEach(() => { 
+    cy.finishShipping();
+  }); 
+ 
+});
 
-  });
+describe("Verify Proceed to Checkout with Apply Discount", () => { 
+  beforeEach(() => { 
+    cy.login();
+    cy.addProduct();
+    cy.checkoutShipping();
+  }); 
 
-  it('3 - First order but change the shipping address/method with Region', () => { 
-
+  it.only(' - Apply Invalid Discount', () => { 
+    cy.get('.action.action-select-shipping-item').eq(1).contains('Ship Here').click();
+    cy.wait(1000)
+    cy.get('[type="radio"].radio').first().check()
+    cy.get('.button.action.continue.primary').contains('Next').click();
+    cy.wait(4000)
+    cy.get('#block-discount-heading').contains('Apply Discount Code').click();
+    cy.wait(1000)
+    cy.get('[name="discount_code"]').type('diskon');
+    cy.get('.action.action-apply').contains('Apply Discount').click();
+    cy.wait(4000)
+    cy.get('.message.message-error.error').should('be.visible').and('contain', 'Verify the code and try again.');
+    cy.get('.action.primary.checkout').contains('Place Order').should("be.visible").click();
+    cy.wait(4000)
+    cy.get('.base').should('be.visible').and('contain', 'Thank you for your purchase!');
+    cy.get('.action.primary.continue').contains('Continue Shopping').should("be.visible").click();
+    cy.wait(4000)
+    cy.url().should('include', 'https://magento.softwaretestingboard.com/');
   });
  
 });

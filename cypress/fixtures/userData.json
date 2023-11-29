@@ -1,18 +1,8 @@
 {
-    "validUser-sudahMenambahkanDataShipping": [
+    "validUser": [
         {
-            "valid_user": "",
-            "valid_password": ""
-        },
-        {
-            "valid_user": "testingizzah@gmail.com",
+            "valid_user"    : "testingizzah@gmail.com",
             "valid_password": "Testingzzah123"
-        }
-    ],
-    "validUser-belumMenambahkanDataShipping": [
-        {
-            "valid_user": "testizzah@gmail.com",
-            "valid_password": "Testizzah123"
         }
     ],
     "invalid": [
