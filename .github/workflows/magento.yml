@@ -1,7 +1,5 @@
 name: Run Luma-Magento Create an Account, Login, Choose Product, View and Update Shopping Cart, Proceed to Checkout every 00:00 Time
 on: push
-  paths:
-    - 'cypress/e2e/1-getting-started/todo.cy.js'
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
