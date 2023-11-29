@@ -191,7 +191,7 @@ describe("Verify Proceed to Checkout with Apply Discount", () => {
     cy.finishDataShipping(); 
   }); 
 
-  it.only(' - Apply Invalid Discount', () => { 
+  it('Apply Invalid Discount', () => { 
     cy.get('#block-discount-heading').contains('Apply Discount Code').click();
     cy.wait(1000)
     cy.get('[name="discount_code"]').type('diskon');
