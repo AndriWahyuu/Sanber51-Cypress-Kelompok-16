@@ -30,7 +30,7 @@ Cypress.Commands.add('login', () => {
 Cypress.Commands.add('addProduct', () => {
     cy.get('.logo').click();
     cy.get('.product-item-link').contains('Radiant Tee').click();
-    cy.get('#option-label-size-143-item-166').click();
+    cy.get('#option-label-size-143-item-166').focus().click();
     cy.get('#option-label-color-93-item-50').focus().click();
     cy.get('#product-addtocart-button').contains('Add to Cart').click();
     cy.wait(5000);
@@ -59,10 +59,10 @@ Cypress.Commands.add('finishDataShipping', () => {
 
 Cypress.Commands.add('finishShipping', () => {
     cy.get('.action.primary.checkout').contains('Place Order').should("be.visible").click();
-    cy.wait(4000)
+    cy.wait(7000)
     cy.get('.base').should('be.visible').and('contain', 'Thank you for your purchase!');
     cy.get('.action.primary.continue').contains('Continue Shopping').should("be.visible").click();
-    cy.wait(4000)
+    cy.wait(7000)
     cy.url().should('include', 'https://magento.softwaretestingboard.com/');
 })
 // -- This is a child command --

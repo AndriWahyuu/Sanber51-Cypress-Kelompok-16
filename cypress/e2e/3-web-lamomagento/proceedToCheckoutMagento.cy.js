@@ -31,7 +31,7 @@ describe("Verify Proceed to Checkout in First Order", () => {
           userDataShipping.validUser[0].phoneNumber)
     });
 
-    it('First order with Region ID', () => { 
+    it.only('First order with Region ID', () => { 
       checkout.orderCheckoutRegionID(
         userDataShipping.validUser[1].firstName,
         userDataShipping.validUser[1].lastName, 
@@ -123,7 +123,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     cy.checkoutShipping();
   }); 
 
-  it.only('Next Order without Add New Address Shipping', () => { 
+  it('Next Order without Add New Address Shipping', () => { 
       // telah dijalankan di beforeEach dan afterEach
   });
 
