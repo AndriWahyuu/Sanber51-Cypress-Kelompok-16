@@ -12,7 +12,6 @@ export class checkout {
         cy.get('[name="region"]').type(state);
         cy.get('[name="postcode"]').type(postalCode);
         cy.get('[name="telephone"]').type(phoneNumber);    
-        cy.get('[type="radio"].radio').first().check()
     }
     
     static orderCheckoutRegionID (firstName, lastName, company, streetAddress0, streetAddress1, streetAddress2, city, country, state, postalCode, phoneNumber) {
@@ -29,7 +28,6 @@ export class checkout {
         cy.wait(2000)
         cy.get('[name="postcode"]').type(postalCode);
         cy.get('[name="telephone"]').type(phoneNumber);    
-        cy.get('[type="radio"].radio').first().check()
     }
 
     static clearOrderCheckoutRegion (firstName, lastName, company, streetAddress0, streetAddress1, streetAddress2, city, country, state, postalCode, phoneNumber) {
@@ -45,7 +43,6 @@ export class checkout {
         cy.get('[name="region"]').clear().type(state);
         cy.get('[name="postcode"]').clear().type(postalCode);
         cy.get('[name="telephone"]').clear().type(phoneNumber);    
-        cy.get('[type="radio"].radio').first().check()
     }
 
     static clearOrderCheckoutRegionID (firstName, lastName, company, streetAddress0, streetAddress1, streetAddress2, city, country, state, postalCode, phoneNumber) {
@@ -62,7 +59,6 @@ export class checkout {
         cy.wait(2000)
         cy.get('[name="postcode"]').clear().type(postalCode);
         cy.get('[name="telephone"]').clear().type(phoneNumber);    
-        cy.get('[type="radio"].radio').first().check()
     }
     
     static nextOrderAddNewAddressRegion () {

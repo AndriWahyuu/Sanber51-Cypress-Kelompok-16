@@ -48,9 +48,16 @@ Cypress.Commands.add('checkoutShipping', () => {
     cy.url().should('include', 'https://magento.softwaretestingboard.com/checkout/#shipping');
 })
 
-Cypress.Commands.add('finishShipping', () => {
+Cypress.Commands.add('shippingMethod', () => {
+    cy.get('[type="radio"].radio').first().check()
+})
+
+Cypress.Commands.add('finishDataShipping', () => {
     cy.get('.button.action.continue.primary').contains('Next').click();
     cy.wait(4000)
+})
+
+Cypress.Commands.add('finishShipping', () => {
     cy.get('.action.primary.checkout').contains('Place Order').should("be.visible").click();
     cy.wait(4000)
     cy.get('.base').should('be.visible').and('contain', 'Thank you for your purchase!');

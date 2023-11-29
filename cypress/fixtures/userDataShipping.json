@@ -27,6 +27,23 @@
             "country"           : "United States",
             "phoneNumber"       : "081234567890"
         }
+    ],
+
+    "invalidUser" : 
+    [
+        {
+            "firstName"         : "",
+            "lastName"          : "",
+            "company"           : "",
+            "streetAddress0"    : "",
+            "streetAddress1"    : "",
+            "streetAddress2"    : "",
+            "city"              : "",
+            "state"             : "",
+            "postalCode"        : "",
+            "country"           : "",
+            "phoneNumber"       : ""
+        }
     ]
 
 }
