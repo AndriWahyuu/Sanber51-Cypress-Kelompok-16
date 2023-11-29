@@ -123,11 +123,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     cy.checkoutShipping();
   }); 
 
-  it('Next Order without Add New Address Shipping', () => { 
-      // telah dijalankan di beforeEach dan afterEach
-  });
-
-  it.skip('Next order add the shipping address with Region', () => { 
+  it('Next order add the shipping address with Region', () => { 
     cy.get('.action.action-show-popup').contains('New Address').click();
     cy.wait(2000)
     checkout.orderCheckoutRegion(
@@ -146,7 +142,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     cy.wait(2000)
   });
 
-  it.skip(' Next order add the shipping address with RegionID', () => { 
+  it(' Next order add the shipping address with RegionID', () => { 
     cy.get('.action.action-show-popup').contains('New Address').click();
     cy.wait(2000)
     checkout.orderCheckoutRegionID(
@@ -165,7 +161,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     cy.wait(2000)
   });
 
-  it.only('Change the shipping address', () => { 
+  it('Change the shipping address', () => { 
     cy.get('.action.action-select-shipping-item').eq(1).contains('Ship Here').click();
     cy.wait(1000)
   });
@@ -187,7 +183,7 @@ describe("Verify Proceed to Checkout with Apply Discount", () => {
     cy.finishDataShipping(); 
   }); 
 
-  it.skip('Apply Invalid Discount', () => { 
+  it('Apply Invalid Discount', () => { 
     cy.get('#block-discount-heading').contains('Apply Discount Code').click();
     cy.wait(1000)
     cy.get('[name="discount_code"]').type('diskon');
