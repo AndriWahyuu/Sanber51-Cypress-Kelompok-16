@@ -1,4 +1,4 @@
-name: Run Luma-Magento Create an Account, Login, Choose Product, View and Update Shopping Cart, Proceed to Checkout every 00:00 Time
+name: Run Luma-Magento
 on: push
 jobs:
   cypress-run:
