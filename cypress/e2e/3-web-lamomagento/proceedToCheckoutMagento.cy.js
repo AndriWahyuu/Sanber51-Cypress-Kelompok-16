@@ -29,6 +29,8 @@ describe("Verify Proceed to Checkout in First Order", () => {
           userDataShipping.validUser[0].state,
           userDataShipping.validUser[0].postalCode,
           userDataShipping.validUser[0].phoneNumber)
+          cy.shippingMethod();
+          cy.finishDataShipping(); 
     });
 
     it('First order with Region ID', () => { 
@@ -44,7 +46,26 @@ describe("Verify Proceed to Checkout in First Order", () => {
         userDataShipping.validUser[1].state,
         userDataShipping.validUser[1].postalCode,
         userDataShipping.validUser[1].phoneNumber)
+        cy.shippingMethod();
+        cy.finishDataShipping(); 
     });
+
+    it('First order with Region and Print Receipt', () => { 
+      checkout.orderCheckoutRegion(
+        userDataShipping.validUser[0].firstName,
+        userDataShipping.validUser[0].lastName, 
+        userDataShipping.validUser[0].company,
+        userDataShipping.validUser[0].streetAddress0,
+        userDataShipping.validUser[0].streetAddress1,
+        userDataShipping.validUser[0].streetAddress2,
+        userDataShipping.validUser[0].city,
+        userDataShipping.validUser[0].country,
+        userDataShipping.validUser[0].state,
+        userDataShipping.validUser[0].postalCode,
+        userDataShipping.validUser[0].phoneNumber)
+        cy.shippingMethod();
+        cy.finishDataShipping(); 
+  });
 
     it.skip('First order but change the shipping address/method with Region', () => { 
       checkout.orderCheckoutRegion(
