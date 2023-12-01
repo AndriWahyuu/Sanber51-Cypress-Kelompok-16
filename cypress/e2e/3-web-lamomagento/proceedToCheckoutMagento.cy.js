@@ -167,7 +167,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
   });
 
   afterEach(() => {
-    cy.shippingMethod();
+    //cy.shippingMethod();
     cy.finishDataShipping(); 
     cy.finishShipping();
   }); 
