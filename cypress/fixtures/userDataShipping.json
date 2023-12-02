@@ -32,17 +32,17 @@
     "invalidUser" : 
     [
         {
-            "firstName"         : "",
-            "lastName"          : "",
-            "company"           : "",
-            "streetAddress0"    : "",
-            "streetAddress1"    : "",
-            "streetAddress2"    : "",
-            "city"              : "",
-            "state"             : "",
-            "postalCode"        : "",
-            "country"           : "",
-            "phoneNumber"       : ""
+            "firstName"         : "SanberQA",
+            "lastName"          : "51-16",
+            "company"           : "Sanbercode",
+            "streetAddress0"    : "Jalan Merak",
+            "streetAddress1"    : "-",
+            "streetAddress2"    : "-",
+            "city"              : "US",
+            "state"             : "Alaska",
+            "postalCode"        : "Alaska",
+            "country"           : "United States",
+            "phoneNumber"       : "081234567890"
         }
     ]
 

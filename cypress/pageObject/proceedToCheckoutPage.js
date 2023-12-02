@@ -7,7 +7,7 @@ export class button {
         cy.get('[id="option-label-color-93-item-50"]').click()
         cy.wait(1000)
         cy.get('#product-addtocart-button').contains('Add to Cart').click();
-        cy.wait(7000);
+        cy.wait(10000);
         cy.get('.message-success').should('be.visible').and('contain', 'You added');
         //cy.get('.action.showcart').click();
         //cy.wait(5000)
@@ -28,7 +28,7 @@ export class button {
 
     static finishDataShipping(){ //finish data address and shipping method
         cy.get('.button.action.continue.primary').contains('Next').click();
-        cy.wait(7000)
+        cy.wait(10000)
     }
 
     static changeThisAddress(){
@@ -40,15 +40,32 @@ export class button {
         cy.wait(2000)
     }
 
+    static saveAddNewAddress(){
+        cy.get('.action.primary.action-save-address').contains('Ship here').click();
+        cy.wait(2000)
+    }
+
     static changeAddressShipping(){
         cy.get('.action.action-select-shipping-item').eq(1).contains('Ship Here').click();
         cy.wait(1000)
     } // in some address (checklist)
 
+    static uncheckAddress(){
+        cy.get('input#billing-address-same-as-shipping-checkmo', { timeout: 10000 }).check()
+        cy.get('input#billing-address-same-as-shipping-checkmo', { timeout: 10000 }).uncheck()
+    }
+
+    static updateAddress(){
+        cy.get('.action-update').contains('Update').should("be.visible").click();
+    }
     static placeOrder(){
         cy.get('.action.primary.checkout').contains('Place Order').should("be.visible").click();
         cy.wait(7000)
         cy.get('.base').should('be.visible').and('contain', 'Thank you for your purchase!');
+    }
+
+    static placeOrderDisable(){
+        cy.get('.action.primary.checkout.disabled').should('exist');
     }
 
     static applyDiscountCode(){
@@ -144,6 +161,23 @@ export class checkout {
         cy.get('.action.action-show-popup').contains('New Address').click();
         cy.wait(7000)
     }
+
+    static orderCheckoutRegionUpdate (firstName, lastName, company, streetAddress0, streetAddress1, streetAddress2, city, country, state, postalCode, phoneNumber) {
+        cy.get('[name="firstname"]').type(firstName);
+        cy.get('[name="lastname"]').type(lastName);
+        cy.get('[name="company"]').type(company);
+        cy.get('[name="street[0]"]').type(streetAddress0);
+        cy.get('[name="street[1]"]').type(streetAddress1);
+        cy.get('[name="street[2]"]').type(streetAddress2);
+        cy.get('[name="city"]').type(city);
+        cy.get("select").eq(1).select(country).invoke("val");
+        cy.wait(2000)
+        cy.get("select").eq(0).select(state).invoke("val");
+        cy.wait(2000)
+        cy.get('[name="postcode"]').type(postalCode);
+        cy.get('[name="telephone"]').type(phoneNumber);    
+    }
+    
 }
 
 export default checkout;

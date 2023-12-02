@@ -174,7 +174,7 @@ describe("Verify Proceed to Checkout in First Order", () => {
       button.checkSummary();
     });
 
-    it('First order with Region ID Apply Invalid', () => { 
+    it('First order with Region ID Apply Invalid Discount', () => { 
       checkout.orderCheckoutRegionID(
         userDataShipping.validUser[1].firstName,
         userDataShipping.validUser[1].lastName, 
@@ -195,6 +195,110 @@ describe("Verify Proceed to Checkout in First Order", () => {
       cy.get('.message.message-error.error').should('be.visible').and('contain', 'Verify the code and try again.');
       button.placeOrder();
     });
+
+    it('First order Invalid Data', () => { 
+      checkout.orderCheckoutRegion(
+        userDataShipping.invalidUser[0].firstName,
+        userDataShipping.invalidUser[0].lastName, 
+        userDataShipping.invalidUser[0].company,
+        userDataShipping.invalidUser[0].streetAddress0,
+        userDataShipping.invalidUser[0].streetAddress1,
+        userDataShipping.invalidUser[0].streetAddress2,
+        userDataShipping.invalidUser[0].city,
+        userDataShipping.invalidUser[0].country,
+        userDataShipping.invalidUser[0].state,
+        userDataShipping.invalidUser[0].postalCode,
+        userDataShipping.invalidUser[0].phoneNumber)
+      button.shippingMethod();
+      button.finishDataShipping();
+      button.placeOrder();
+  });
+
+  it('First order Invalid Shipping Method', () => { 
+    checkout.orderCheckoutRegionID(
+      userDataShipping.validUser[1].firstName,
+      userDataShipping.validUser[1].lastName, 
+      userDataShipping.validUser[1].company,
+      userDataShipping.validUser[1].streetAddress1,
+      userDataShipping.validUser[1].streetAddress1,
+      userDataShipping.validUser[1].streetAddress2,
+      userDataShipping.validUser[1].city,
+      userDataShipping.validUser[1].country,
+      userDataShipping.validUser[1].state,
+      userDataShipping.validUser[1].postalCode,
+      userDataShipping.validUser[1].phoneNumber)
+    //button.shippingMethod();
+    button.finishDataShipping();
+    cy.get('#co-shipping-method-form > .message').should('be.visible').and('contain', 'The shipping method is missing. Select the shipping method and try again.'); //butuh assertion//
+  });
+
+  it('First order Invalid Postal Code', () => { 
+    checkout.orderCheckoutRegionID(
+      userDataShipping.invalidUser[0].firstName,
+      userDataShipping.invalidUser[0].lastName, 
+      userDataShipping.invalidUser[0].company,
+      userDataShipping.invalidUser[0].streetAddress0,
+      userDataShipping.invalidUser[0].streetAddress0,
+      userDataShipping.invalidUser[0].streetAddress2,
+      userDataShipping.invalidUser[0].city,
+      userDataShipping.invalidUser[0].country,
+      userDataShipping.invalidUser[0].state,
+      userDataShipping.invalidUser[0].postalCode,
+      userDataShipping.invalidUser[0].phoneNumber)
+    button.shippingMethod();
+    cy.get('.control > .message').should('be.visible').and('contain', 'Provided Zip/Postal Code seems to be invalid.');
+  });
+
+  it('First order with Region Unchecklist Address', () => { 
+    checkout.orderCheckoutRegion(
+      userDataShipping.validUser[0].firstName,
+      userDataShipping.validUser[0].lastName, 
+      userDataShipping.validUser[0].company,
+      userDataShipping.validUser[0].streetAddress0,
+      userDataShipping.validUser[0].streetAddress1,
+      userDataShipping.validUser[0].streetAddress2,
+      userDataShipping.validUser[0].city,
+      userDataShipping.validUser[0].country,
+      userDataShipping.validUser[0].state,
+      userDataShipping.validUser[0].postalCode,
+      userDataShipping.validUser[0].phoneNumber)
+    button.shippingMethod();
+    button.finishDataShipping();
+    button.uncheckAddress();
+    button.placeOrderDisable();
+  });
+
+  it.skip('First order with Different Address', () => { 
+    checkout.orderCheckoutRegion(
+      userDataShipping.validUser[0].firstName,
+      userDataShipping.validUser[0].lastName, 
+      userDataShipping.validUser[0].company,
+      userDataShipping.validUser[0].streetAddress0,
+      userDataShipping.validUser[0].streetAddress1,
+      userDataShipping.validUser[0].streetAddress2,
+      userDataShipping.validUser[0].city,
+      userDataShipping.validUser[0].country,
+      userDataShipping.validUser[0].state,
+      userDataShipping.validUser[0].postalCode,
+      userDataShipping.validUser[0].phoneNumber)
+    button.shippingMethod();
+    button.finishDataShipping();
+    button.uncheckAddress();
+    checkout.orderCheckoutRegionUpdate(
+      userDataShipping.validUser[0].firstName,
+      userDataShipping.validUser[0].lastName, 
+      userDataShipping.validUser[0].company,
+      userDataShipping.validUser[0].streetAddress0,
+      userDataShipping.validUser[0].streetAddress1,
+      userDataShipping.validUser[0].streetAddress2,
+      userDataShipping.validUser[0].city,
+      userDataShipping.validUser[0].country,
+      userDataShipping.validUser[0].state,
+      userDataShipping.validUser[0].postalCode,
+      userDataShipping.validUser[0].phoneNumber)
+    button.updateAddress();
+    button.placeOrder();
+  });
 
 });
 
@@ -227,7 +331,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     button.printReceipt();
   });
 
-  it('Next Order Check Summary', () => { 
+  it('Next Order Check Order', () => { 
     button.shippingMethod();
     button.finishDataShipping();
     button.placeOrder();
@@ -258,7 +362,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
       userDataShipping.validUser[0].state,
       userDataShipping.validUser[0].postalCode,
       userDataShipping.validUser[0].phoneNumber)
-    button.changeAddressShipping();
+    button.saveAddNewAddress();
     button.shippingMethod();
     button.finishDataShipping();
     button.placeOrder();
@@ -278,7 +382,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
       userDataShipping.validUser[1].state,
       userDataShipping.validUser[1].postalCode,
       userDataShipping.validUser[1].phoneNumber)
-    button.changeAddressShipping();
+    button.saveAddNewAddress();
     button.shippingMethod();
     button.finishDataShipping();
     button.placeOrder();
@@ -289,6 +393,13 @@ describe("Verify Proceed to Checkout in Next Order", () => {
     button.changeAddressShipping();
     button.finishDataShipping();
     button.placeOrder();
+  });
+
+  it('Next Order Unchecklist Address', () => { 
+    button.shippingMethod();
+    button.finishDataShipping();
+    button.uncheckAddress();
+    button.placeOrderDisable();
   });
  
 });
