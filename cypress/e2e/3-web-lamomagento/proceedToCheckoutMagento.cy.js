@@ -285,7 +285,7 @@ describe("Verify Proceed to Checkout in Next Order", () => {
   });
 
   //sudah ditambahkan data shipping baru
-  it.only('Change the shipping address', () => { 
+  it('Change the shipping address', () => { 
     button.changeAddressShipping();
     button.finishDataShipping();
     button.placeOrder();
