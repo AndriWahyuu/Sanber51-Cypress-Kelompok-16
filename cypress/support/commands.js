@@ -34,46 +34,46 @@ Cypress.Commands.add('login', () => {
     cy.get('.action.login.primary').click()
 })
 
-Cypress.Commands.add('addProduct', () => {
-    cy.get('.logo').click();
-    cy.get('.product-item-link').contains('Radiant Tee').click();
-    cy.get('[id="option-label-size-143-item-166"]').click()
-    cy.wait(1000)
-    cy.get('[id="option-label-color-93-item-50"]').click()
-    cy.wait(1000)
-    cy.get('#product-addtocart-button').contains('Add to Cart').click();
-    cy.wait(7000);
-    cy.get('.message-success').should('be.visible').and('contain', 'You added');
+//Cypress.Commands.add('addProduct', () => {
+//    cy.get('.logo').click();
+//    cy.get('.product-item-link').contains('Radiant Tee').click();
+//    cy.get('[id="option-label-size-143-item-166"]').click()
+//    cy.wait(1000)
+//    cy.get('[id="option-label-color-93-item-50"]').click()
+//   cy.wait(1000)
+//   cy.get('#product-addtocart-button').contains('Add to Cart').click();
+//    cy.wait(7000);
+//    cy.get('.message-success').should('be.visible').and('contain', 'You added');
     //cy.get('.action.showcart').click();
     //cy.wait(5000)
-})
+//})
 
-Cypress.Commands.add('checkoutShipping', () => {
-    cy.get(".showcart").should("be.visible").click();
-    cy.wait(7000);
-    cy.get('#top-cart-btn-checkout').contains('Proceed to Checkout').should("be.visible").click();
-    cy.wait(7000);
-    cy.visit('https://magento.softwaretestingboard.com/checkout/#shipping');
-    cy.url().should('include', 'https://magento.softwaretestingboard.com/checkout/#shipping');
-})
+//Cypress.Commands.add('checkoutShipping', () => {
+//    cy.get(".showcart").should("be.visible").click();
+//    cy.wait(7000);
+//    cy.get('#top-cart-btn-checkout').contains('Proceed to Checkout').should("be.visible").click();
+//    cy.wait(7000);
+//    cy.visit('https://magento.softwaretestingboard.com/checkout/#shipping');
+//    cy.url().should('include', 'https://magento.softwaretestingboard.com/checkout/#shipping');
+//})
 
-Cypress.Commands.add('shippingMethod', () => {
-    cy.get('[type="radio"].radio').first().check()
-})
+//Cypress.Commands.add('shippingMethod', () => {
+//    cy.get('[type="radio"].radio').first().check()
+//})
 
-Cypress.Commands.add('finishDataShipping', () => {
-    cy.get('.button.action.continue.primary').contains('Next').click();
-    cy.wait(7000)
-})
+//Cypress.Commands.add('finishDataShipping', () => {
+//    cy.get('.button.action.continue.primary').contains('Next').click();
+//    cy.wait(7000)
+//})
 
-Cypress.Commands.add('finishShipping', () => {
-    cy.get('.action.primary.checkout').contains('Place Order').should("be.visible").click();
-    cy.wait(7000)
-    cy.get('.base').should('be.visible').and('contain', 'Thank you for your purchase!');
-    cy.get('.action.primary.continue').contains('Continue Shopping').should("be.visible").click();
-    cy.wait(7000)
-    cy.url().should('include', 'https://magento.softwaretestingboard.com/');
-})
+//Cypress.Commands.add('finishShipping', () => {
+//    cy.get('.action.primary.checkout').contains('Place Order').should("be.visible").click();
+//    cy.wait(7000)
+//    cy.get('.base').should('be.visible').and('contain', 'Thank you for your purchase!');
+//    cy.get('.action.primary.continue').contains('Continue Shopping').should("be.visible").click();
+//    cy.wait(7000)
+//    cy.url().should('include', 'https://magento.softwaretestingboard.com/');
+//})
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //

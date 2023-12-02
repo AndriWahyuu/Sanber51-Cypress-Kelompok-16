@@ -4,4 +4,7 @@ export class login {
         cy.get('#pass').type(password)
         cy.get('.action.login.primary').click()
     }
+
 }
+
+export default checkout;

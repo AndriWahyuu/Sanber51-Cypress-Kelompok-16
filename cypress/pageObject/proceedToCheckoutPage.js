@@ -1,3 +1,82 @@
+export class button {
+    static addProduct(){
+        cy.get('.logo').click();
+        cy.get('.product-item-link').contains('Radiant Tee').click();
+        cy.get('[id="option-label-size-143-item-166"]').click()
+        cy.wait(1000)
+        cy.get('[id="option-label-color-93-item-50"]').click()
+        cy.wait(1000)
+        cy.get('#product-addtocart-button').contains('Add to Cart').click();
+        cy.wait(7000);
+        cy.get('.message-success').should('be.visible').and('contain', 'You added');
+        //cy.get('.action.showcart').click();
+        //cy.wait(5000)
+    }
+
+    static checkoutShipping(){
+        cy.get(".showcart").should("be.visible").click();
+        cy.wait(7000);
+        cy.get('#top-cart-btn-checkout').contains('Proceed to Checkout').should("be.visible").click();
+        cy.wait(7000);
+        cy.visit('https://magento.softwaretestingboard.com/checkout/#shipping');
+        cy.url().should('include', 'https://magento.softwaretestingboard.com/checkout/#shipping');
+    }
+
+    static shippingMethod(){
+        cy.get('[type="radio"].radio').first().check()
+    }
+
+    static finishDataShipping(){ //finish data address and shipping method
+        cy.get('.button.action.continue.primary').contains('Next').click();
+        cy.wait(7000)
+    }
+
+    static changeThisAddress(){
+     cy.get('.action.action-edit').eq(0).click();   
+    }
+
+    static addNewAddressShipping(){
+        cy.get('.action.action-show-popup').contains('New Address').click();
+        cy.wait(2000)
+    }
+
+    static changeAddressShipping(){
+        cy.get('.action.action-select-shipping-item').eq(1).contains('Ship Here').click();
+        cy.wait(1000)
+    } // in some address (checklist)
+
+    static placeOrder(){
+        cy.get('.action.primary.checkout').contains('Place Order').should("be.visible").click();
+        cy.wait(7000)
+        cy.get('.base').should('be.visible').and('contain', 'Thank you for your purchase!');
+    }
+
+    static applyDiscountCode(){
+        cy.get('#block-discount-heading').contains('Apply Discount Code').click();
+        cy.wait(1000)
+    }
+
+    static applyDiscount(){
+        cy.get('.action.action-apply').contains('Apply Discount').click();
+        cy.wait(4000)
+    }
+
+    static printReceipt(){
+        cy.get('.action.print').contains('Print receipt').click();
+    }
+
+    static checkSummary(){
+        cy.get('.order-number').click();
+    }
+
+    static continueShipping() {
+        cy.get('.action.primary.continue').contains('Continue Shopping').should("be.visible").click();
+        cy.wait(7000)
+        cy.url().should('include', 'https://magento.softwaretestingboard.com/');
+    }
+
+}
+
 export class checkout {
     static orderCheckoutRegion (firstName, lastName, company, streetAddress0, streetAddress1, streetAddress2, city, country, state, postalCode, phoneNumber) {
         cy.get('[name="firstname"]').type(firstName);
@@ -66,3 +145,5 @@ export class checkout {
         cy.wait(7000)
     }
 }
+
+export default checkout;
