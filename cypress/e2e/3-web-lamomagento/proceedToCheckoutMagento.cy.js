@@ -1,5 +1,6 @@
 import {createAccount } from "../../pageObject/createAccountPage.js"; 
 import {checkout} from '../../pageObject/proceedToCheckoutPage.js'
+import {checkoutWithoutLogin} from '../../pageObject/proceedToCheckoutPage.js'
 import {button} from '../../pageObject/proceedToCheckoutPage.js'
 import newAccount from "../../fixtures/newAccount.json"; 
 const userDataShipping = require('../../fixtures/userDataShipping.json')
@@ -196,24 +197,6 @@ describe("Verify Proceed to Checkout in First Order", () => {
       button.placeOrder();
     });
 
-    it('First order Invalid Data', () => { 
-      checkout.orderCheckoutRegion(
-        userDataShipping.invalidUser[0].firstName,
-        userDataShipping.invalidUser[0].lastName, 
-        userDataShipping.invalidUser[0].company,
-        userDataShipping.invalidUser[0].streetAddress0,
-        userDataShipping.invalidUser[0].streetAddress1,
-        userDataShipping.invalidUser[0].streetAddress2,
-        userDataShipping.invalidUser[0].city,
-        userDataShipping.invalidUser[0].country,
-        userDataShipping.invalidUser[0].state,
-        userDataShipping.invalidUser[0].postalCode,
-        userDataShipping.invalidUser[0].phoneNumber)
-      button.shippingMethod();
-      button.finishDataShipping();
-      button.placeOrder();
-  });
-
   it('First order Invalid Shipping Method', () => { 
     checkout.orderCheckoutRegionID(
       userDataShipping.validUser[1].firstName,
@@ -268,7 +251,7 @@ describe("Verify Proceed to Checkout in First Order", () => {
     button.placeOrderDisable();
   });
 
-  it.skip('First order with Different Address', () => { 
+  it('First order with Different Address', () => { 
     checkout.orderCheckoutRegion(
       userDataShipping.validUser[0].firstName,
       userDataShipping.validUser[0].lastName, 
@@ -403,3 +386,71 @@ describe("Verify Proceed to Checkout in Next Order", () => {
   });
  
 });
+
+describe("Verify Proceed to Checkout Without Login", () => { 
+  beforeEach(() => { 
+    cy.visit('');
+    //cy.addProduct();
+    checkoutWithoutLogin.addProduct();
+    //cy.checkoutShipping();
+    button.checkoutShipping();
+  }); 
+
+  it('Checkout Succesfully without Recent Account', () => { 
+    checkoutWithoutLogin.noRecentAccount();
+    checkout.orderCheckoutRegion(
+      userDataShipping.validUser[0].firstName,
+      userDataShipping.validUser[0].lastName, 
+      userDataShipping.validUser[0].company,
+      userDataShipping.validUser[0].streetAddress0,
+      userDataShipping.validUser[0].streetAddress1,
+      userDataShipping.validUser[0].streetAddress2,
+      userDataShipping.validUser[0].city,
+      userDataShipping.validUser[0].country,
+      userDataShipping.validUser[0].state,
+      userDataShipping.validUser[0].postalCode,
+      userDataShipping.validUser[0].phoneNumber)
+    button.shippingMethod();
+    button.finishDataShipping();
+    button.placeOrder();
+  });
+
+  it('Checkout Succesfully with Recent Account', () => { 
+    checkoutWithoutLogin.recentAccount();
+    checkout.orderCheckoutRegion(
+      userDataShipping.validUser[0].firstName,
+      userDataShipping.validUser[0].lastName, 
+      userDataShipping.validUser[0].company,
+      userDataShipping.validUser[0].streetAddress0,
+      userDataShipping.validUser[0].streetAddress1,
+      userDataShipping.validUser[0].streetAddress2,
+      userDataShipping.validUser[0].city,
+      userDataShipping.validUser[0].country,
+      userDataShipping.validUser[0].state,
+      userDataShipping.validUser[0].postalCode,
+      userDataShipping.validUser[0].phoneNumber)
+    button.shippingMethod();
+    button.finishDataShipping();
+    button.placeOrder();
+  });
+
+  it('Checkout Succesfully without Recent Account', () => { 
+    checkoutWithoutLogin.noRecentAccount();
+    checkout.orderCheckoutRegionID(
+      userDataShipping.validUser[1].firstName,
+      userDataShipping.validUser[1].lastName, 
+      userDataShipping.validUser[1].company,
+      userDataShipping.validUser[1].streetAddress1,
+      userDataShipping.validUser[1].streetAddress1,
+      userDataShipping.validUser[1].streetAddress2,
+      userDataShipping.validUser[1].city,
+      userDataShipping.validUser[1].country,
+      userDataShipping.validUser[1].state,
+      userDataShipping.validUser[1].postalCode,
+      userDataShipping.validUser[1].phoneNumber)
+    //button.shippingMethod();
+    button.finishDataShipping();
+    cy.get('#co-shipping-method-form > .message').should('be.visible').and('contain', 'The shipping method is missing. Select the shipping method and try again.');
+  });
+
+})
