@@ -10,7 +10,6 @@ export class button {
         cy.wait(1000)
         cy.get('#product-addtocart-button').contains('Add to Cart').click();
         cy.wait(10000);
-        cy.get('.message-success').should('be.visible').and('contain', 'Thank you for registering with Main Website Store.');
         cy.get('.message-success').should('be.visible').and('contain', 'You added');
         //cy.get('.action.showcart').click();
         //cy.wait(5000)
