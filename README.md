@@ -9,7 +9,7 @@
     <tbody>
         <tr>
             <td>Create an Account</td>
-            <td>Izzah</td>
+            <td>Izzah Tazkiyah</td>
         </tr>
         <tr>
             <td>Login</td>
@@ -25,7 +25,7 @@
         </tr>  
         <tr>
             <td>Proceed to Checkout</td>
-            <td>Izzah</td>
+            <td>Izzah Tazkiyah</td>
         </tr>
     </tbody>
   </table>
