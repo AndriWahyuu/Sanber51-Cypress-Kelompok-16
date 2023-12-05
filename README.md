@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <td>View and Update Shooping Cart</td>
-            <td>Masyara Andriana Wahyu Hapsari</td>
+            <td>Andriana Wahyu Hapsari</td>
         </tr>  
         <tr>
             <td>Proceed to Checkout</td>
